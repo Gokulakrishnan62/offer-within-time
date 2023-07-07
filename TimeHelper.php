@@ -25,7 +25,9 @@ class TimeHelper extends Base
         $currentTime = '22:00';
         $to = isset($condition['values']) && !empty($condition['values']['to']) ? $condition['values']['to'] : '00:00';
         $from = isset($condition['values']) && !empty($condition['values']['from']) ? $condition['values']['from'] : '00:00';
-
+        if($to == '00:00' || $from='00:00'){
+            return false;
+        }
         //Converting the Time to Seconds
         $current_time = self::convertToSecond($currentTime);
         $from_time = self::convertToSecond($from);
